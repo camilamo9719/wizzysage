@@ -5,7 +5,7 @@ const JuanJose = () => {
     <div>
         <canvas id="canvas"></canvas>
             <div className="copy" >
-            <h1 id="name">OwO</h1>
+                <h1 id="name">OwO</h1>
             </div>
     </div>
   )

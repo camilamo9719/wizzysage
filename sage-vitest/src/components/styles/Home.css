@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  
+  html,
+  body {
+      height: 100%;
+  }
+
+  body {
+    cursor: pointer;
+    user-select: none;
+    overflow: hidden;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to top, #e796a9 0%, #fbc8d4 100%);
+  }
