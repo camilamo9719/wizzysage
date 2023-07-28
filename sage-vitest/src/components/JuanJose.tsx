@@ -16,7 +16,7 @@ const JuanJose = () => {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
     
-    const points: number = 5;
+    const points: number = 3;
     const radius: number = 200 * dpr;
     const h: number = 600 * dpr;
     const w: number = 600 * dpr;
