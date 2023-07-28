@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
-import '../components/styles/JuanJose.css'
+import React, { Component } from 'react';
+import '../components/styles/JuanJose.css';
 
-const JuanJose = () => {
-
-  useEffect(() => {
-    
+class JuanJose extends Component {
+  componentDidMount() {
+    //UseEffect para el cubo 
     const el: HTMLCanvasElement = document.getElementById('canvas') as HTMLCanvasElement;
     const ctx: CanvasRenderingContext2D = el.getContext('2d')!;
     const dpr: number = window.devicePixelRatio || 1;
@@ -209,17 +208,20 @@ const JuanJose = () => {
       changeFace();
     })();    
 
+  }
 
-  }, []);
-
-  return (
-    <div>
-        <canvas id="canvas"></canvas>
-            <div className="copy" >
-                <h1 id="name">OwO</h1>
-            </div>
-    </div>
-  )
+  render() {
+    return (
+      <>
+        <div>
+          <canvas id="canvas"></canvas>
+          <div className="copy">
+            <h1 id="name">OwO</h1>
+          </div>
+        </div>
+      </>
+    );
+  }
 }
 
-export default JuanJose
+export default JuanJose;
