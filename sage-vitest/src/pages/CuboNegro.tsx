@@ -9,7 +9,7 @@ const CuboNegro = () => {
       <p>Dale click para aumentar o disminuir el número de lados</p>
 
       <section>
-        <JuanJose> </JuanJose>
+        <JuanJose/>
       </section>
     </div>
   )

@@ -1,65 +1,27 @@
-import React, { Component, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import '../components/styles/JuanJose.css';
+import { SwingPoint } from './interfaces/SwingPoint';
 
-class JuanJose extends Component {
+const JuanJose = () => {
+  var el: HTMLCanvasElement = document.getElementById('canvas') as HTMLCanvasElement;
+  var ctx: CanvasRenderingContext2D = el.getContext('2d')!;
+  var points = 3;
+  let aumentoDeLados = 1;
+  
+  const circles: SwingPoint[][] = [];
+  const pi: number = Math.PI;
+  const dpr: number = window.devicePixelRatio || 1;
+  const radius: number = 200 * dpr;
+  const h: number = 600 * dpr;
+  const w: number = 600 * dpr;
+  const center = {
+    x: w / 2 * dpr,
+    y: h / 2 * dpr
+  };
+  const rangeMin: number = 4;
+  const rangeMax: number = 15;
 
-points: number = 3;
-aumentoDeLados : number = 1;
-
- // Define the 'cambioDeLados' function outside the 'componentDidMount' method
- cambioDeLados(): void {
-  //Llamado de la funcion points
-  let numero: number = this.points; // Access 'points' from the class scope
-
-  if (numero == 3) {
-    this.aumentoDeLados = 1;
-  } else if (numero == 5) {
-    this.aumentoDeLados = -1;
-  }
-
-  numero += this.aumentoDeLados;
-}
-
-  componentDidMount() {
-    //UseEffect para el cubo 
-    const el: HTMLCanvasElement = document.getElementById('canvas') as HTMLCanvasElement;
-    const ctx: CanvasRenderingContext2D = el.getContext('2d')!;
-    const dpr: number = window.devicePixelRatio || 1;
-    const pi: number = Math.PI;
-    
-    function getRandomInt(min: number, max: number): number {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-    
-    const points: number = 3;
-    const radius: number = 200 * dpr;
-    const h: number = 600 * dpr;
-    const w: number = 600 * dpr;
-    const center = {
-      x: w / 2 * dpr,
-      y: h / 2 * dpr
-    };
-    
-
-    interface SwingPoint {
-      x: number;
-      y: number;
-      radian: number;
-      range: number;
-      phase: number;
-    }
-    
-    const circles: SwingPoint[][] = [];
-    const rangeMin: number = 4;
-    const rangeMax: number = 15;
-    const showPoints: boolean = false;
-    
-    let mouseY: number = 0;
-    let tick: number = 12;
-    
-    const gradient1: CanvasGradient = ctx.createLinearGradient(0, 0, w, 0);
+  const gradient1: CanvasGradient = ctx.createLinearGradient(0, 0, w, 0);
     gradient1.addColorStop(0, '#850073');
     gradient1.addColorStop(1, '#f10091');
     
@@ -76,6 +38,75 @@ aumentoDeLados : number = 1;
     gradient5.addColorStop(1, '#f2d163');
     
     const gradients: CanvasGradient[] = [gradient1, gradient3, gradient4, gradient5];
+    // --------------------------------------------------------------------------- //
+    // random
+    function random(num1: number, num2: number): number {
+      const max: number = Math.max(num1, num2);
+      const min: number = Math.min(num1, num2);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+  const cambioDeLados = () => {
+    let numero = points;
+
+    if (numero === 3) {
+      aumentoDeLados = 1;
+    } else if (numero === 5) {
+      aumentoDeLados = -1;
+    }
+    numero += aumentoDeLados;
+    points = numero;
+
+    const contador = document.getElementById('counter');
+    if (contador) {
+      contador.textContent = points.toString();
+    }
+
+    updateNumber();
+
+    //Cambio en la figura
+    function updateNumber() {
+      
+      circles.length = 0;
+      for (var idx = 0; idx <= gradients.length - 1; idx++) {
+    
+        let swingpoints = [];
+        let radian = 0;
+    
+        for (var i = 0; i < points; i++) {
+          radian = pi * 2 / points * i;
+          var ptX = center.x + radius * Math.cos(radian);
+          var ptY = center.y + radius * Math.sin(radian);
+    
+          swingpoints.push({
+            x: ptX,
+            y: ptY,
+            radian: radian,
+            range: random(rangeMin, rangeMax),
+            phase: 0
+          });
+        }
+    
+        circles.push(swingpoints);
+    
+      }
+    }
+  };
+
+  useEffect(() => {
+     el = document.getElementById('canvas') as HTMLCanvasElement;
+     ctx = el.getContext('2d')!;
+    //UseEffect para el cubo 
+    function getRandomInt(min: number, max: number): number {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    
+    const showPoints: boolean = false;
+    
+    let mouseY: number = 0;
+    let tick: number = 12;
+    
     
     window.addEventListener('mousemove', handleMove, true);
     
@@ -201,13 +232,6 @@ aumentoDeLados : number = 1;
       return (num1 % num2 + num2) % num2;
     }
     
-    // --------------------------------------------------------------------------- //
-    // random
-    function random(num1: number, num2: number): number {
-      const max: number = Math.max(num1, num2);
-      const min: number = Math.min(num1, num2);
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
 
     (() => {
       const myArray: string[] = ['OwO', 'OwO', 'OwO', 'OwO', '—w—', "OwO", 'OwO'];
@@ -227,24 +251,28 @@ aumentoDeLados : number = 1;
       changeFace();
     })();
     
-  }
   
-  render() {
-    return (
-      <>
+    // Si hay alguna limpieza que hacer, puedes retornar una función de limpieza desde useEffect
+    return () => {
+      // Código de limpieza si es necesario
+    };
+  }, []); // Agrega dependencias si es necesario
+
+  // Renderización del componente
+  return (
+    <>
+      <div>
+        <canvas id="canvas" onClick={cambioDeLados}></canvas>
+        <div className="copy">
+          <h1 id="name">OwO</h1>
+        </div>
         <div>
-        <canvas id="canvas" onClick={this.cambioDeLados}></canvas>
-          <div className="copy">
-            <h1 id="name">OwO</h1>
-          </div>
-          <div>
-        <h3>Número de Lados</h3>
-        <p id='counter'>3</p>
+          <h3>Número de Lados</h3>
+          <p id='counter'>3</p>
         </div>
-        </div>
-      </>
-    );
-  }
-}
+      </div>
+    </>
+  );
+};
 
 export default JuanJose;
