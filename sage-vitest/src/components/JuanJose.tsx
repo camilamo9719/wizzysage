@@ -1,7 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import '../components/styles/JuanJose.css';
 
 class JuanJose extends Component {
+
+points: number = 3;
+aumentoDeLados : number = 1;
+
+ // Define the 'cambioDeLados' function outside the 'componentDidMount' method
+ cambioDeLados(): void {
+  //Llamado de la funcion points
+  let numero: number = this.points; // Access 'points' from the class scope
+
+  if (numero == 3) {
+    this.aumentoDeLados = 1;
+  } else if (numero == 5) {
+    this.aumentoDeLados = -1;
+  }
+
+  numero += this.aumentoDeLados;
+}
+
   componentDidMount() {
     //UseEffect para el cubo 
     const el: HTMLCanvasElement = document.getElementById('canvas') as HTMLCanvasElement;
@@ -24,6 +42,7 @@ class JuanJose extends Component {
       y: h / 2 * dpr
     };
     
+
     interface SwingPoint {
       x: number;
       y: number;
@@ -206,18 +225,22 @@ class JuanJose extends Component {
       }
     
       changeFace();
-    })();    
-
+    })();
+    
   }
-
+  
   render() {
     return (
       <>
         <div>
-          <canvas id="canvas"></canvas>
+        <canvas id="canvas" onClick={this.cambioDeLados}></canvas>
           <div className="copy">
             <h1 id="name">OwO</h1>
           </div>
+          <div>
+        <h3>Número de Lados</h3>
+        <p id='counter'>3</p>
+        </div>
         </div>
       </>
     );
