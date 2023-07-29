@@ -1,5 +1,5 @@
 import React from 'react'
-import JuanJose from '../components/JuanJose'
+import JuanJose from '../components/JuanJose/JuanJose'
 
 const CuboNegro = () => {
 
@@ -9,7 +9,8 @@ const CuboNegro = () => {
       <p>Dale click para aumentar o disminuir el número de lados</p>
 
       <section>
-        <JuanJose/>
+        {/**Se pone como parámetro el número de 3 lados */}
+        <JuanJose startPoints={3} />
       </section>
     </div>
   )

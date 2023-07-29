@@ -37,15 +37,17 @@
       z-index: 100;
       
       
-      h1 {
+    h1 {
         margin: 0;
         color: #6f86d6;
         letter-spacing: 1px;
         font-size: 6em;
         font-weight: 400;
-        font-family: 'Futura', 'Helvetica Neue', Helvetica;
+        font-family: "Futura", "Helvetica Neue", Helvetica;
         background: linear-gradient(to top, #ff7a00 0%, #f2d163 100%);
         background: -moz-linear-gradient(transparent, transparent);
+        background-clip: text;
         -webkit-text-fill-color: transparent;
-    }
+        -webkit-background-clip: text;
+      }
 }
