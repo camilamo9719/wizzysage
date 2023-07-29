@@ -5,12 +5,16 @@ import '../components/styles/Home.css'
 const Home = () => {
   return (
     <div>
-        <nav>
-            <ul>
-              <h1>Bienvenido al Cubo Negro</h1>
+        <nav className='navHome'>
+            <ul className='ulHome'>
+              <h1 className='BienvenidoTitle'>Bienvenido al Cubo Negro</h1>
                 <li>
-                  <p>Si deseas continuar dale click al siguiente botón</p>
-                    <NavLink to = 'CuboNegro'>Cubo Negro</NavLink>
+                  <p className='pHome'>Si deseas continuar dale click al siguiente botón</p>
+                    <NavLink to = 'CuboNegro'>
+                      <div className='divButton'>
+                      <button type='button' className='CuboNegroButton'>CuboNegro</button>
+                      </div>
+                    </NavLink>
                 </li>
             </ul>
         </nav>

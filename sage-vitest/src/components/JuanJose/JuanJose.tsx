@@ -199,8 +199,8 @@ const JuanJose: React.FC<Props> = ({startPoints}) => {
         <div className="copy">
           <h1 id="name">OwO</h1>
         </div>
-        <div>
-          <h3>Número de Lados</h3>
+        <div className='DivNumeroLados transparent_bg'>
+          <h3 className='h3NumeoLados'>Número de Lados</h3>
           <p id='counter' data-testid='counter'>3</p>
         </div>
       </div>
