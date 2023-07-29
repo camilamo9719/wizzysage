@@ -1,5 +1,6 @@
 import React from 'react'
 import JuanJose from '../components/JuanJose/JuanJose'
+import '../components/styles/CuboNegro.css'
 
 const CuboNegro = () => {
 
