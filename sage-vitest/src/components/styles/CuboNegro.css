@@ -21,3 +21,17 @@
   .sectionCuboNegro{
     font-size: large;
   }
+
+  .divCuboNegro {
+    display: flex;
+    flex-direction: column;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  }
+
+  .h1CuboNegro,
+  .pCuboNegro {
+    justify-content: center;
+    align-items: center;
+    margin-top: .5rem;
+  }
