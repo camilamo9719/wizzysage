@@ -1,27 +1,29 @@
-# React + TypeScript + Vite
+# Prueba Front Sage
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Datos de Contacto:
 
-Currently, two official plugins are available:
+- Nombre: Camila Andrea Morales Ortega
+- Correo: camilamo9719@gmail.com
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Explicación del Código:
 
-## Expanding the ESLint configuration
+Se realizó un código FrontEnd utilizando React y Typescript para su realización.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+En ella se encontrará con la siguiente estructura de carpetas:
 
-- Configure the top-level `parserOptions` property like this:
+1. La carpeta `pages` se encuentran la página Home con un botón que redigirá con una ruta a la página CuboNegro en la que se encuentra el componente principal y el contador para cada vez que se le de click a la figura.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+2. La carpeta `components` se encuentran tres tipos de carpetas divididas en:
+   - La carpeta `interfaces` donde se está un código Typescript para la función SwingPoint del Cubo.
+   - La carpeta `JuanJose` en la que están:
+      - El test automatizado en `vitest` dentro del archivo `JuanJose.test.tsx`
+      - El código del cubo en el file `JuanJose.tsx`
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+3. La carpeta `styles` con los files .css para la página web.
+
+4. El file `App.tsx` con las rutas que redigirán a las diferentes páginas web. 
+
+## Decisiones Finales:
+
+- No hay. Considero que el código se encuentra bien planteado.
+
